@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Custom Apparel Designer</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+  <div id="left-block">
+    <canvas id="c" width="800" height="450"></canvas>
+    <div id="bottom-block">
+      <div id="bottom-one">
+        <button id="imageSaver"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Design</button>
+      </div>
+      <div id="bottom-two">
+        <a id="imageDownload" href="#"><i class="fa fa-download" aria-hidden="true"></i> Download Design</a>
+      </div>
+    </div>
+    <div id="credits">
+      <p class="creator_data">A Simple Online Custom Apparel Designer for FreshPrints.com</p>
+      <p class="creator_data">Designed & Developed by "Sathwik Aala"</p>
+    </div>
+  </div>
+
+  <div id="right-block">
+
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'new_design')" id="defaultOpen">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create New Design
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'old_design')">
+        <i class="fa fa-history" aria-hidden="true"></i> Edit Saved Design
+      </button>
+    </div>
+
+    <div id="new_design" class="tabcontent">
+
+      <div id="edit-group1">
+        <label for="Load_image" class="custom-file-upload">
+          <i class="fa fa-upload" aria-hidden="true"></i> Upload Image
+        </label>
+        <input type="file" id="Load_image">
+        <button id="add_text"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Text Box</button>
+      </div>
+
+      <div id="edit-group2">
+        <p class="group-head2">Rotate</p>
+        <button id="clock_5" onclick=rotate(5)>Rotate 5<span>&#176;</span> <i class="fa fa-repeat" aria-hidden="true"></i> </button>
+        <button id="anticlock_5" onclick=rotate(-5)>Rotate 5<span>&#176;</span> <i class="fa fa-undo" aria-hidden="true"></i></button><br />
+        <input type="text" id="rotate_value" placeholder="Enter angle in degrees (example: 90)" onkeypress="return isNumber(event)">
+        <button id="submit_angle">Rotate</button>
+      </div>
+
+      <div id="edit-group3">
+        <p class="group-head3">Scale</p>
+        <input type="text" id="scale_width_value" onkeypress="return isNumber(event)"> Width <i class="fa fa-arrows-h" aria-hidden="true"></i>
+        <input type="text" id="scale_height_value" onkeypress="return isNumber(event)"> Height <i class="fa fa-arrows-v" aria-hidden="true"></i><br />
+        <input type="checkbox" id="aspect_ratio_check" checked>Keep Aspect Ratio<br />
+        <button id="scale_submit">Submit</button><br />
+        <input type="text" id="scale_percent_value" placeholder="Enter percentage to scale (ex: 50)" onkeypress="return isNumber(event)">
+        <button id="submit_scale_percent">Scale</button><br />
+        <button id="inc_textbox" onclick=resize_textbox(1)>Increase Text Size <i class="fa fa-plus" aria-hidden="true"></i> </button>
+        <button id="dec_textbox" onclick=resize_textbox(-1)>Decrease Text Size <i class="fa fa-minus" aria-hidden="true"></i></button><br />
+      </div>
+
+      <div id="edit-group4">
+        <button id="undo"><i class="fa fa-arrow-left" aria-hidden="true"></i> Undo</button>
+        <button id="redo">Redo <i class="fa fa-arrow-right" aria-hidden="true"></i></button><br />
+        <button id="remove_object"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove Selected Item</button>
+      </div>
+
+    </div>
+
+    <div id="old_design" class="tabcontent">
+      <span id="note">* Displayed in recent to old order</span>
+      <ul id="history_list">
+<!-- here -->
+<% if(JSON.parse(pastdata).length !== 0) { %>
+
+  <%  for(var i=1; i<=JSON.parse(pastdata).length; i++) { %>
+    <li class="history-btn" onclick=UpdateCanvas(this.innerHTML)><%= 'History ' + i %></li>
+  <% } } else { %>
+      <p>Sorry No Designs Found</p>
+      <% } %>
+
+
+<!-- till here -->
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="history_big_data">
+    <%= pastdata %>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modal-matter"></p>
+    </div>
+  </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.17/fabric.min.js"></script>
+<script src="js/main.js"></script>
+
+</html>
