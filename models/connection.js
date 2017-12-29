@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'freshprints_db'
+  host: 'sql12.freemysqlhosting.net',
+  user: 'sql12213152',
+  password: 'CkW1dd5uRu',
+  database: 'sql12213152'
 });
 
 connection.connect(function(err) {
