@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) {
-    console.log('The following error occured while trying to connect to MySQL ' + error.message);
+    console.log('The following error occured while trying to connect to MySQL ' + err.message);
     return;
   }
   console.log('Connection to MySQL established successfully');
