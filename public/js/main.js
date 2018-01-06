@@ -20,8 +20,10 @@ var historyArr = document.getElementById('history_big_data').innerHTML;
 
 
 //Initialising canvas
-canvas = new fabric.Canvas('c');
-canvas.setBackgroundImage('/images/backshirt2.jpg', canvas.renderAll.bind(canvas));
+canvas = new fabric.Canvas('c', {backgroundColor: "#e8d3f7"});
+canvas.setBackgroundImage('/images/shirt.png', canvas.renderAll.bind(canvas));
+
+// canvas.setBackgroundColor('#ffffff', canvas.renderAll.bind(canvas));
 
 //Setting image loader
 document.getElementById('Load_image').onchange = function handleImage(e) {
@@ -46,6 +48,12 @@ document.getElementById('Load_image').onchange = function handleImage(e) {
   }
   reader.readAsDataURL(e.target.files[0]);
 }
+
+
+//Event Listener and handler to change color of Tshirt
+document.getElementById("colorpicker").addEventListener("input", function updateFirst(event) {
+  canvas.setBackgroundColor(event.target.value, canvas.renderAll.bind(canvas));
+}, false);
 
 //Event Listener to add Text Object to canvas
 add_text.addEventListener('click', function() {
@@ -374,6 +382,7 @@ function imageDownload(e) {
 function UpdateCanvas(his_val) {
   var hisval = parseInt(his_val.split(' ').pop() - 1);
   var hisObj = JSON.parse(historyArr)
+  console.log(his_val)
   var babe = JSON.parse(hisObj[hisval]);
   var babe2 = babe.objects
   for (var car in babe2) {
