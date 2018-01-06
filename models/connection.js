@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   host: 'sql12.freemysqlhosting.net',
-  user: 'sql12213152',
-  password: 'CkW1dd5uRu',
-  database: 'sql12213152'
+  user: 'sql12214309',
+  password: 'tfCBHbPQqA',
+  database: 'sql12214309'
 });
 
 connection.connect(function(err) {
