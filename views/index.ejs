@@ -11,6 +11,13 @@
 
   <div id="left-block">
     <canvas id="c" width="800" height="450"></canvas>
+
+    <div id="color-picker">
+      <p>Click below to choose colour of the T-shirt</p>
+      <input type="color" value="#e8d3f7" id="colorpicker">
+    </div>
+
+
     <div id="bottom-block">
       <div id="bottom-one">
         <button id="imageSaver"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Design</button>
@@ -77,17 +84,15 @@
     <div id="old_design" class="tabcontent">
       <span id="note">* Displayed in recent to old order</span>
       <ul id="history_list">
-<!-- here -->
-<% if(JSON.parse(pastdata).length !== 0) { %>
 
-  <%  for(var i=1; i<=JSON.parse(pastdata).length; i++) { %>
-    <li class="history-btn" onclick=UpdateCanvas(this.innerHTML)><%= 'History ' + i %></li>
-  <% } } else { %>
-      <p>Sorry No Designs Found</p>
-      <% } %>
+        <!-- here -->
+        <% if(JSON.parse(pastdata).length !== 0) {
+              for(var i=1; i<=parseInt(JSON.parse(pastdata).length); i++){ %>
+          <li class="history-btn" onclick=UpdateCanvas(this.innerHTML)><%= 'History ' + i %></li>
+        <% }} else %>
+        <p>Sorry No Designs Found</p>
+        <!-- till here -->
 
-
-<!-- till here -->
       </ul>
     </div>
   </div>
