@@ -5,10 +5,11 @@ body {
 #left-block {
   float: left;
   width: 800px;
+  text-align: center;
 }
 
 #bottom-block {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #ffffff;
   border: 1px solid #bfbfbf;
   border-radius: 5px;
@@ -80,7 +81,7 @@ canvas {
 #credits {
   background-color: #fff;
   padding: 3px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 15px;
   border: 1px solid #bfbfbf;
   border-radius: 5px;
@@ -286,6 +287,11 @@ p.group-head2 {
 
 #submit_angle:hover {
   background-color: #15a589;
+}
+
+
+#edit-group-new {
+  border-bottom: 1px solid #ddd;
 }
 
 #edit-group3 {
@@ -600,4 +606,15 @@ p.group-head3 {
 
 #history_big_data {
   display: none;
+}
+
+
+/*new css*/
+
+#color-picker {
+  background-color: #fff;
+  margin-top: 10px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  padding-bottom: 10px;
 }
